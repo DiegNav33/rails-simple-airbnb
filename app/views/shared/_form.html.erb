@@ -1,0 +1,106 @@
+<div class="form-wrapper">
+  <h2><%= @flat.new_record? ? "Add a new flat" : "Edit the flat" %></h2>
+  <%= form_with model: @flat, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :name, 'Name *'%>
+      <%= form.text_field :name, class: "form-control #{'is-invalid' if @flat.errors[:name].present?}" %>
+      <% if @flat.errors[:name].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:name].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :address, 'Address *' %>
+      <%= form.text_field :address, class: "form-control #{'is-invalid' if @flat.errors[:address].present?}" %>
+      <% if @flat.errors[:address].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:address].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :zip_code, 'Zip Code *' %>
+      <%= form.text_field :zip_code, class: "form-control #{'is-invalid' if @flat.errors[:zip_code].present?}" %>
+      <% if @flat.errors[:zip_code].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:zip_code].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :city, 'City *' %>
+      <%= form.text_field :city, class: "form-control #{'is-invalid' if @flat.errors[:city].present?}" %>
+      <% if @flat.errors[:city].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:city].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :country, 'Country *' %>
+      <%= form.text_field :country, class: "form-control #{'is-invalid' if @flat.errors[:country].present?}" %>
+      <% if @flat.errors[:country].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:country].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description, 'Description *' %>
+      <%= form.text_area :description, class: "form-control #{'is-invalid' if @flat.errors[:description].present?}" %>
+      <% if @flat.errors[:description].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:description].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :picture_url %>
+      <%= form.text_field :picture_url, class: "form-control #{'is-invalid' if flat.errors[:picture_url].present?}" %>
+      <% if flat.errors[:picture_url].present? %>
+        <div class="error-message">
+          <%= flat.errors[:picture_url].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :price_per_nights, 'Price per night *' %>
+      <div class="input-group">
+        <%= form.number_field :price_per_nights, class: "form-control #{'is-invalid' if @flat.errors[:price_per_nights].present?}", min: "1" %>
+        <span class="input-group-text">€</span>
+      </div>
+      <% if @flat.errors[:price_per_nights].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:price_per_nights].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :number_of_guests, 'Number of guest *' %>
+      <%= form.number_field :number_of_guests, class: "form-control #{'is-invalid' if @flat.errors[:number_of_guests].present?}", min: "1", max: "8" %>
+      <% if @flat.errors[:number_of_guests].present? %>
+        <div class="error-message">
+          <%= @flat.errors[:number_of_guests].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group mt-3">
+        <%= form.submit class: "btn btn-success" %>
+        <% if @flat.new_record? %>
+          <%= link_to 'Cancel', flats_path, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to 'Cancel', flat_path(@flat), class: 'btn btn-danger' %>
+        <% end %>
+    </div>
+  <% end %>
+</div>

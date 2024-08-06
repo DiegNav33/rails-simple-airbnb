@@ -13,3 +13,86 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Assurez-vous qu'il soit au-dessus des autres éléments */
+  background-color: rgba(255, 255, 255, 0.5); /* Fond transparent */
+  backdrop-filter: blur(8px); /* Effet de flou */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour distinction */
+}
+
+ .card-img-top {
+  height: 200px; /* Vous pouvez ajuster la hauteur selon vos besoins */
+  object-fit: cover;
+}
+
+ a {
+  text-decoration: none;
+ }
+
+ .is-invalid {
+  border-color: #dc3545;
+}
+
+ .error-message {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 0.25em;
+}
+
+.form-wrapper {
+  margin: 2rem auto;
+  background-color: #f8f9fa; /* Couleur de fond de la carte */
+  padding: 20px; /* Padding autour du formulaire */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  max-width: 700px; /* Largeur maximale */
+  width: 100%; /* Pour s'assurer que le formulaire prend toute la largeur disponible jusqu'à max-width */
+}
+
+.bgImg {
+  background-image: url("/assets/jr-korpa-9XngoIpxcEo-unsplash.jpg");
+  height: 350px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.box {
+  background-color: #e7ebee; /* Fond clair */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 15px; /* Espacement interne */
+  margin-bottom: 20px; /* Espacement en bas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée */
+}
+
+.margin-top-negative {
+  margin-top: -75px;
+}
+
+.card-index {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: .5s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  .card-img-top {
+    height: 200px; /* Fixe une hauteur pour les images des cartes */
+    object-fit: cover; /* Assure que l'image couvre toute la zone sans déformation */
+  }
+
+  .card-body {
+    flex: 1; /* Permet au corps de la carte de prendre tout l'espace restant */
+  }
+
+  .card-footer {
+    margin-top: auto; /* Place le footer en bas de la carte */
+  }
+
+}

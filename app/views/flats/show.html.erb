@@ -1,0 +1,77 @@
+<main>
+  <% if @flat.picture_url.present? %>
+              <%= image_tag @flat.picture_url, class: "card-img-top img-fluid bgImg", alt: @flat.name %>
+            <% else %>
+              <%= image_tag 'jr-korpa-9XngoIpxcEo-unsplash.jpg', class: "card-img-top img-fluid bgImg", alt: "Default Image" %>
+            <% end %>
+  <div class="container margin-top-negative">
+    <% if flash[:notice].present? %>
+      <p style="color: green; text-align:center; border: .5px solid green; border-radius: .5rem; background-color: rgba(0, 255, 0, 0.1); width:50%; margin: 1rem auto; padding: .5rem 0"><%= notice %></p>
+    <% end %>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="box">
+          <h1><%= @flat.name %></h1>
+          <p><%= @flat.address %>, <%= @flat.zip_code %>, <%= @flat.city %>, <%= @flat.country %></p>
+        </div>
+        <div class="box">
+          <h2>A bit more about this flat...</h2>
+          <p><%= simple_format(@flat.description) %></p>
+          <%= image_tag 'screenshot.png', class: "card-img-top img-fluid bgImg", alt: "Default Image" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box">
+          <h3>Book this place!</h3>
+          <form id="booking-form" action="">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">From</span>
+                </div>
+                <input type="date" id="from" name="from" class="form-control">
+              </div>
+            </div>
+            <div class="form-group my-2">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">To</span>
+                </div>
+                <input type="date" id="to" name="to" class="form-control">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success" style="width:100%">Book</button>
+          </form>
+        </div>
+        <div class="box">
+          <h4>Details</h4>
+          <div class="d-flex justify-content-start align-items-center">
+            <p class="me-4">Max: <%= @flat.number_of_guests %> <%= @flat.number_of_guests == 1 ? 'person' : 'people' %></p>
+            <p>Per night: <%= @flat.price_per_nights %>€</p>
+          </div>
+        </div>
+        <div class="box d-flex justify-content-between align-items-center">
+          <h4>Share</h4>
+          <div>
+            <%= link_to 'https://www.facebook.com', target: '_blank' do %>
+              <i class="fa-brands fa-square-facebook" style="color: #333; font-size: 1.5rem"></i>
+            <% end %>
+            <%= link_to 'https://www.instagram.com', target: '_blank' do %>
+              <i class="fa-brands fa-square-instagram" style="color: #333; font-size: 1.5rem"></i>
+            <% end %>
+            <%= link_to 'https://www.facebook.com', target: '_blank' do %>
+              <i class="fa-brands fa-square-twitter" style="color: #333; font-size: 1.5rem"></i>
+            <% end %>
+          </div>
+        </div>
+        <div class="box d-flex justify-content-between align-items-center">
+          <h4>Action</h4>
+          <div>
+            <%= link_to "Edit", edit_flat_path(@flat), class: "btn btn-primary" %>
+            <%= link_to "Delete", flat_path(@flat), class: "btn btn-outline-danger ms-2", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this advert?"} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

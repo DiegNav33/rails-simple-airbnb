@@ -1,0 +1,23 @@
+<header class="sticky-header py-1">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <%= link_to "Simple AirbBnb", flats_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item me-2">
+            <%= form_with(url: flats_path, method: :get, local: true, class: "d-flex ms-3") do %>
+              <%= text_field_tag :query, params[:query], class: "form-control me-1", placeholder: "Search for flats..." %>
+              <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Add Flat", new_flat_path, class: "btn btn-primary" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
